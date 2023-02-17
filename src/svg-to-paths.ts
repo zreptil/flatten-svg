@@ -133,7 +133,8 @@ function ang(ux: number, uy: number, vx: number, vy: number) {
 
 export function flattenSVG(svg: SVGElement, options: Partial<Options> = {}): Line[] {
   const {maxError = 0.1} = options;
-  const svgPoint = (svg as any).createSVGPoint()
+  // const svgPoint = (svg as any).createSVGPoint()
+  const svgPoint = new DOMPoint(svg as any)
   const paths: Line[] = []
   for (const shape of walkSvgShapes(svg)) {
     const ctm = (shape as SVGGraphicsElement).getCTM()
